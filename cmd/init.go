@@ -12,12 +12,9 @@ func init() {
 
 	App.Commands = []cli.Command{
 		{
-			Name:  "tweet",
-			Usage: "tweet with text",
-			Action: func(c *cli.Context) error {
-				fmt.Println("added task: ", c.Args())
-				return nil
-			},
+			Name:   "tweet",
+			Usage:  "tweet with text",
+			Action: Tweeting,
 		},
 		{
 			Name:  "timeline",
@@ -51,7 +48,7 @@ func init() {
 					Usage: "set consumerKey",
 				},
 				cli.StringFlag{
-					Name:  "consumersecret,cs",
+					Name:  "consumerSecret,cs",
 					Value: "",
 					Usage: "set consumerSecretKey",
 				},
@@ -65,14 +62,7 @@ func init() {
 					Value: "",
 					Usage: "set accessSecretKey",
 				}},
-			Action: func(c *cli.Context) error {
-				fmt.Println("new task template: ", c.Args().First())
-				return nil
-			},
+			Action: ChangeConfig,
 		},
 	}
-
-	// config := oauth1.NewConfig("NC73D8wtYilE8muXNocLzSSO2", "V8K7IyH024ggrliQOO4GDQu51Eg9oP2u91y9ZiitKjHx4b333l")
-	// token := oauth1.NewToken("3214850788-4oCOxLrYB72Ngfq4sLXTVYnV4hyYsCXpm9izhmf", "8mk86yzdfXC1eWudqY0u7UFSq7QJ6Vr3OiwxMdjWOxtHl")
-	// httpClient := config.Client(oauth1.NoContext, token)
 }
