@@ -23,7 +23,7 @@ func init() {
 				cli.StringFlag{
 					Name:  "num,n",
 					Value: "20",
-					Usage: "set the limit of timelines",
+					Usage: "set the limit of timelines, default is 20",
 				}},
 			Action: func(c *cli.Context) error {
 				fmt.Println("completed task: ", c.Args().First())
@@ -33,10 +33,13 @@ func init() {
 		{
 			Name:  "trend",
 			Usage: "get trends",
-			Action: func(c *cli.Context) error {
-				fmt.Println("new task template: ", c.Args().First())
-				return nil
-			},
+			Flags: []cli.Flag{
+				cli.StringFlag{
+					Name:  "number,n",
+					Value: "20",
+					Usage: "number of getting trends, maximum is 50, default is 20",
+				}},
+			Action: ShowTrend,
 		},
 		{
 			Name:  "config",
