@@ -16,10 +16,10 @@ type Config struct {
 }
 
 type TokenConfig struct {
-	ConsumerKey    string
-	ConsumerSecret string
-	AccessToken    string
-	AccessSecret   string
+	consumerKey    string
+	consumerSecret string
+	accessToken    string
+	accessSecret   string
 }
 
 var conf Config
@@ -32,10 +32,21 @@ func init() {
 }
 
 func ChangeConfig(c *cli.Context) error {
-	conf.Token.ConsumerKey = c.String("consumer")
-	conf.Token.ConsumerSecret = c.String("consumerSecret")
-	conf.Token.AccessToken = c.String("accsessToken")
-	conf.Token.AccessSecret = c.String("accessSecret")
+	var (
+		consumerKey    = c.String("consumer")
+		consumerSecret = c.String("consumerSecret")
+		accessToken    = c.String("accsessToken")
+		accessSecret   = c.String("accessSecret")
+	)
+
+	if consumerKey == "" || consumerSecret == "" || accessToken == "" || accessSecret == "" {
+		panic(fmt.Errorf("Config file does not have  enough authentication keys or secrets !!"))
+	}
+
+	conf.Token.consumerKey = consumerKey
+	conf.Token.consumerSecret = consumerSecret
+	conf.Token.accessToken = accessToken
+	conf.Token.accessSecret = accessSecret
 
 	buf := new(bytes.Buffer)
 	if err := toml.NewEncoder(buf).Encode(conf); err != nil {
