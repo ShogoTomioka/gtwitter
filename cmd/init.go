@@ -15,14 +15,19 @@ func init() {
 			Name:  "tweet",
 			Usage: "tweet with text",
 			Action: func(c *cli.Context) error {
-				fmt.Println("added task: ", c.Args().First())
+				fmt.Println("added task: ", c.Args())
 				return nil
 			},
 		},
 		{
 			Name:  "timeline",
 			Usage: "show timeline",
-			// 引数に表示するタイムラインの数を指定できるようにする
+			Flags: []cli.Flag{
+				cli.StringFlag{
+					Name:  "num,n",
+					Value: "20",
+					Usage: "set the limit of timelines",
+				}},
 			Action: func(c *cli.Context) error {
 				fmt.Println("completed task: ", c.Args().First())
 				return nil
@@ -31,15 +36,38 @@ func init() {
 		{
 			Name:  "trend",
 			Usage: "get trends",
-			Subcommands: []cli.Command{
-				{
-					Name:  "add",
-					Usage: "add a new template",
-					Action: func(c *cli.Context) error {
-						fmt.Println("new task template: ", c.Args().First())
-						return nil
-					},
+			Action: func(c *cli.Context) error {
+				fmt.Println("new task template: ", c.Args().First())
+				return nil
+			},
+		},
+		{
+			Name:  "config",
+			Usage: "change configuration",
+			Flags: []cli.Flag{
+				cli.StringFlag{
+					Name:  "consumer,c",
+					Value: "",
+					Usage: "set consumerKey",
 				},
+				cli.StringFlag{
+					Name:  "consumersecret,cs",
+					Value: "",
+					Usage: "set consumerSecretKey",
+				},
+				cli.StringFlag{
+					Name:  "accsessToken,at",
+					Value: "",
+					Usage: "set accessToken",
+				},
+				cli.StringFlag{
+					Name:  "accessSecret,as",
+					Value: "",
+					Usage: "set accessSecretKey",
+				}},
+			Action: func(c *cli.Context) error {
+				fmt.Println("new task template: ", c.Args().First())
+				return nil
 			},
 		},
 	}
