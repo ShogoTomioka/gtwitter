@@ -8,6 +8,8 @@ var App cli.App
 
 func init() {
 
+	//displayConsole := &lib.DisplayConsole{}
+
 	App.Commands = []cli.Command{
 		{
 			Name:   "tweet",

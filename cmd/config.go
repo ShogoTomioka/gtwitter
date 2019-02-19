@@ -3,7 +3,6 @@ package cmd
 import (
 	"bytes"
 	"fmt"
-	"log"
 	"os"
 
 	"github.com/BurntSushi/toml"
@@ -49,16 +48,20 @@ func ChangeConfig(c *cli.Context) error {
 
 	buf := new(bytes.Buffer)
 	if err := toml.NewEncoder(buf).Encode(conf); err != nil {
-		log.Fatal(err)
+		return err
 	}
+
 	file, err := os.Create("./config/token.toml")
 	if err != nil {
 		return err
 	}
 	defer file.Close()
+
 	_, err = file.Write(([]byte)(buf.String()))
 	if err != nil {
 		return err
 	}
+
+	fmt.Println("Changing configuration is completely success!!")
 	return nil
 }

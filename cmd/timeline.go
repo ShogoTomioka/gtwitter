@@ -4,8 +4,10 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/ShogoTomioka/gtwitter/lib"
 	"github.com/dghubble/go-twitter/twitter"
 	"github.com/dghubble/oauth1"
+	"github.com/fatih/color"
 	"github.com/urfave/cli"
 )
 
@@ -33,7 +35,8 @@ func GetTimeline(c *cli.Context) error {
 	}
 
 	for _, tweet := range tweets {
-		fmt.Println("ユーザ: ", tweet.User.Name)
+		color.Yellow(lib.FormatCreatedAt(tweet.CreatedAt))
+		color.Green(("ユーザ:" + tweet.User.Name))
 		fmt.Println("テキスト: ", tweet.Text)
 		fmt.Println("-------------------------------------------------")
 	}

@@ -1,8 +1,12 @@
 package cmd
 
 import (
+	"fmt"
+
+	"github.com/ShogoTomioka/gtwitter/lib"
 	"github.com/dghubble/go-twitter/twitter"
 	"github.com/dghubble/oauth1"
+	"github.com/fatih/color"
 	"github.com/urfave/cli"
 )
 
@@ -19,7 +23,10 @@ func Tweeting(c *cli.Context) error {
 	)
 
 	// Send a Tweet
-	_, _, err := client.Statuses.Update(text, nil)
+	tweet, _, err := client.Statuses.Update(text, nil)
+	color.Yellow(lib.FormatCreatedAt(tweet.CreatedAt))
+	color.Green((tweet.User.Name))
+	fmt.Println("テキスト: ", tweet.Text)
 
 	return err
 }

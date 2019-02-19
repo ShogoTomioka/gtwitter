@@ -3,8 +3,10 @@ package cmd
 import (
 	"fmt"
 
+	"github.com/ShogoTomioka/gtwitter/lib"
 	"github.com/dghubble/go-twitter/twitter"
 	"github.com/dghubble/oauth1"
+	"github.com/fatih/color"
 	"github.com/urfave/cli"
 )
 
@@ -21,7 +23,8 @@ func SerchTweet(c *cli.Context) error {
 	)
 
 	if word == "" {
-		fmt.Errorf("Input word to find tweets!")
+		color.Red("検索するワードを入力してね, -word or -w")
+		return nil
 	}
 
 	search, _, err := client.Search.Tweets(&twitter.SearchTweetParams{
@@ -36,8 +39,10 @@ func SerchTweet(c *cli.Context) error {
 		if i == count {
 			return nil
 		}
-		fmt.Println("ユーザ: ", tweet.User.Name)
+		color.Yellow(lib.FormatCreatedAt(tweet.CreatedAt))
+		color.Green("ユーザ: " + tweet.User.Name)
 		fmt.Println(tweet.Text)
+		fmt.Println("-------------------------------")
 	}
 
 	return nil
