@@ -1,8 +1,6 @@
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/urfave/cli"
 )
 
@@ -25,10 +23,7 @@ func init() {
 					Value: "20",
 					Usage: "set the limit of timelines, default is 20",
 				}},
-			Action: func(c *cli.Context) error {
-				fmt.Println("completed task: ", c.Args().First())
-				return nil
-			},
+			Action: GetTimeline,
 		},
 		{
 			Name:  "trend",
