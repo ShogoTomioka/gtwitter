@@ -18,9 +18,9 @@ func init() {
 			Name:  "timeline",
 			Usage: "show timeline",
 			Flags: []cli.Flag{
-				cli.StringFlag{
+				cli.IntFlag{
 					Name:  "count,c",
-					Value: "20",
+					Value: 20,
 					Usage: "set the limit of timelines, default is 20",
 				}},
 			Action: GetTimeline,
@@ -29,12 +29,28 @@ func init() {
 			Name:  "trend",
 			Usage: "get trends",
 			Flags: []cli.Flag{
-				cli.StringFlag{
+				cli.IntFlag{
 					Name:  "count,c",
-					Value: "20",
+					Value: 20,
 					Usage: "number of getting trends, maximum is 50, default is 20",
 				}},
 			Action: ShowTrend,
+		},
+		{
+			Name:  "serch",
+			Usage: "serch with text",
+			Flags: []cli.Flag{
+				cli.StringFlag{
+					Name:  "word,w",
+					Value: "",
+					Usage: "set text to find tweets",
+				},
+				cli.IntFlag{
+					Name:  "count,c",
+					Value: 20,
+					Usage: "number of getting trends, maximum is 50, default is 20",
+				}},
+			Action: SerchTweet,
 		},
 		{
 			Name:  "config",
