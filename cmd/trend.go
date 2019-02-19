@@ -33,7 +33,7 @@ func ShowTrend(c *cli.Context) error {
 			if n == number {
 				return nil
 			}
-			fmt.Println(t.Name, "\n  URL:", t.URL)
+			fmt.Println(t.Name, "\nURL:", t.URL)
 		}
 	}
 
