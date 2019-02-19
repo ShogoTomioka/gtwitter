@@ -21,7 +21,7 @@ func init() {
 			Usage: "show timeline",
 			Flags: []cli.Flag{
 				cli.StringFlag{
-					Name:  "num,n",
+					Name:  "count,c",
 					Value: "20",
 					Usage: "set the limit of timelines, default is 20",
 				}},
@@ -35,7 +35,7 @@ func init() {
 			Usage: "get trends",
 			Flags: []cli.Flag{
 				cli.StringFlag{
-					Name:  "number,n",
+					Name:  "count,c",
 					Value: "20",
 					Usage: "number of getting trends, maximum is 50, default is 20",
 				}},
