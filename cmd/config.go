@@ -10,7 +10,6 @@ import (
 	"github.com/urfave/cli"
 )
 
-//UserConfig 設定ファイルのユーザ部分
 type Config struct {
 	Token TokenConfig
 }
