@@ -39,7 +39,7 @@ func ChangeConfig(c *cli.Context) error {
 	)
 
 	if consumerKey == "" || consumerSecret == "" || accessToken == "" || accessSecret == "" {
-		panic(fmt.Errorf("Config file does not have  enough authentication keys or secrets !!"))
+		fmt.Errorf("Config file does not have  enough authentication keys or secrets !!")
 	}
 
 	conf.Token.ConsumerKey = consumerKey

@@ -15,19 +15,20 @@ func SerchTweet(c *cli.Context) error {
 
 		httpClient = config.Client(oauth1.NoContext, token)
 		client     = twitter.NewClient(httpClient)
+
+		word  = c.String("word")
+		count = c.Int("count")
 	)
 
-	word := c.String("word")
-	count := c.Int("count")
 	if word == "" {
-		panic(fmt.Errorf("Input word to find tweets!"))
+		fmt.Errorf("Input word to find tweets!")
 	}
 
 	search, _, err := client.Search.Tweets(&twitter.SearchTweetParams{
 		Query: word,
 	})
 	if err != nil {
-		panic(fmt.Errorf("Failed to find tweet!!"))
+		fmt.Errorf("Failed to find tweet!!")
 	}
 
 	tweets := search.Statuses

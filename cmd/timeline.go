@@ -21,7 +21,7 @@ func GetTimeline(c *cli.Context) error {
 
 	count, err := strconv.Atoi(c.String("count"))
 	if err != nil {
-		panic(fmt.Errorf("Incorrect input number !!"))
+		fmt.Errorf("Incorrect input number !!")
 	}
 
 	// Home Timeline
@@ -29,7 +29,7 @@ func GetTimeline(c *cli.Context) error {
 		Count: count,
 	})
 	if err != nil {
-		panic(fmt.Errorf("Failed to get timelines!!"))
+		fmt.Errorf("Failed to get timelines!!")
 	}
 
 	for _, tweet := range tweets {
