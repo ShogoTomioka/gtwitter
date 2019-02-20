@@ -6,6 +6,7 @@ import (
 
 	"github.com/dghubble/go-twitter/twitter"
 	"github.com/dghubble/oauth1"
+	"github.com/fatih/color"
 	"github.com/urfave/cli"
 )
 
@@ -18,7 +19,7 @@ func ShowTrend(c *cli.Context) error {
 		client     = twitter.NewClient(httpClient)
 	)
 
-	number, err := strconv.Atoi(c.String("number"))
+	number, err := strconv.Atoi(c.String("count"))
 	if err != nil {
 		fmt.Errorf("Incorrect input number !!")
 	}
@@ -33,7 +34,9 @@ func ShowTrend(c *cli.Context) error {
 			if n == number {
 				return nil
 			}
-			fmt.Println(t.Name, "\nURL:", t.URL)
+			color.Blue(t.Name)
+			color.Yellow("URL:")
+			fmt.Println(t.URL)
 		}
 	}
 
