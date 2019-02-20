@@ -1,18 +1,18 @@
-## gtwitter  
+# gtwitter  
 gwitter is a CLI for the Twitter API. Please, check usage what can do with this tool.
 To use this CLI tool, `ConsumerKey`, `ConsumerSecret`, `AccessToken`, `AccessSecret` are necessary.
 
 please, visit [Twitter Developer's site](https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html) to get Tokens.
 After you get Tokens, add token to `token.toml` file or set token by using "config" subcommand.
 
-### Usage
+## Usage
 
-#### Install 
+## Install 
 ```
 go install github.com/ShogoTomioka/gtwitter                
 ```
 
-#### Set Config
+## Set Config
 Check [Twitter Developer's site](https://developer.twitter.com/en/docs/basics/authentication/guides/access-tokens.html) to know how to get `Accsess Token` and `Consumer Keys`.
 
 Add your Tokens `ConsumerKey`, `ConsumerSecret`, `AccessToken`, `AccessSecret` to config/token.toml or use `config` subcommand,
@@ -31,7 +31,7 @@ gtwitter config -consumer       [your consumer Key]       \
 gtwitter tweet ["you tweet text"]
 ```
 
-### Show Timeline
+## Show Timeline
 
 `Timeline` subcommand show your timeline.You can select number of timelines with `-count` or `-c` option.
 ```
@@ -39,22 +39,22 @@ gtwitter tweet ["you tweet text"]
 gtwitter timeline  -c 10
 ```
 
-### Show Trends
+## Show Trends
 `Trends` subcommand show you trends with `WOID=1110809(Tokyo)`.You can select number of showing trends with `-count` or `-c` option.
 ```
 // Show 10 trends, default is 20
 gtwitter trends -c 10
 ```
 
-### Search Tweets with word
+## Search Tweets with word
 `Search` subcommand provides you searching feature by word you want to search. You can select numnber of searching tweets with `-count` or `-c` option.
 ```
 // Show 10 tweets searched out with "Bodybuilding", default is 20
 gtwitter search -w Bodybuilding -c 10
 ```
 
-### Contributing
+## Contributing
 If you find mistake, feel free to send PR or Issue
 
-### LICENSE
+## LICENSE
 MIT LICENSE
