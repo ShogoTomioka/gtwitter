@@ -21,7 +21,7 @@ func ShowTrend(c *cli.Context) error {
 
 	number, err := strconv.Atoi(c.String("count"))
 	if err != nil {
-		fmt.Errorf("Incorrect input number !!")
+		return fmt.Errorf("Incorrect input number !!")
 	}
 
 	param := &twitter.TrendsPlaceParams{}
