@@ -21,6 +21,9 @@ func Tweeting(c *cli.Context) error {
 
 		text = c.Args().Get(0)
 	)
+	if text == "" {
+		return nil
+	}
 
 	// Send a Tweet
 	tweet, _, err := client.Statuses.Update(text, nil)
