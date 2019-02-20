@@ -21,14 +21,17 @@ func ShowTrend(c *cli.Context) error {
 
 	number, err := strconv.Atoi(c.String("count"))
 	if err != nil {
-		return fmt.Errorf("Incorrect input number !!")
+		fmt.Errorf("Incorrect input number !!")
 	}
 
 	param := &twitter.TrendsPlaceParams{}
 
 	// 東京のWOEIDをセット
 	woeid := int64(1110809)
-	trends, _, _ := client.Trends.Place(woeid, param)
+	trends, _, err := client.Trends.Place(woeid, param)
+	if err != nil {
+		return err
+	}
 	for _, w := range trends {
 		for n, t := range w.Trends {
 			if n == number {
