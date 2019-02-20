@@ -39,8 +39,8 @@ func init() {
 			Action: ShowTrend,
 		},
 		{
-			Name:  "serch",
-			Usage: "serch with text",
+			Name:  "search",
+			Usage: "search with text",
 			Flags: []cli.Flag{
 				cli.StringFlag{
 					Name:  "word,w",
@@ -52,7 +52,7 @@ func init() {
 					Value: 20,
 					Usage: "number of getting trends, maximum is 50, default is 20",
 				}},
-			Action: SerchTweet,
+			Action: SearchTweet,
 		},
 		{
 			Name:  "config",
