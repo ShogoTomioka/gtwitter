@@ -9,7 +9,7 @@ After you get Tokens, add token to `token.toml` file or set token by using "conf
 
 ## Install 
 ```
-go install github.com/ShogoTomioka/gtwitter                
+git clone https://github.com/ShogoTomioka/gtwitter.git        
 ```
 
 ## Set Config
